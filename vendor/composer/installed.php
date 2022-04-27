@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => NULL,
+        'name' => '__root__',
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => NULL,
+            'dev_requirement' => false,
+        ),
+        'symfony/css-selector' => array(
+            'pretty_version' => 'v6.0.3',
+            'version' => '6.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/css-selector',
+            'aliases' => array(),
+            'reference' => '1955d595c12c111629cc814d3f2a2ff13580508a',
+            'dev_requirement' => false,
+        ),
+        'voku/simple_html_dom' => array(
+            'pretty_version' => '4.8.5',
+            'version' => '4.8.5.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../voku/simple_html_dom',
+            'aliases' => array(),
+            'reference' => '77df6b0bd33845f61ec8b07328c463b725bdfced',
+            'dev_requirement' => false,
+        ),
+    ),
+);
