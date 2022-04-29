@@ -1,56 +1,14 @@
-    <?php 
+<?php 
     include_once "./DBConnectandFuncs.php";
+    include_once "./modifyWeights.php";
+    include "./header.php";
 
-    $query = "SHOW tables;";
-    $stmt = $conn->prepare($query);
-    if ($stmt->execute()) {
-    $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
-    }else {
-    echo "no connection to database";
-    }
-
-    if (isset($_POST["id"])) {
-        add($conn);
-    }
-    if (isset($_POST["1"])) {
-        updateRow($conn, "1");
-    }
-    if (isset($_POST["2"])) {
-        updateRow($conn, "2");
-    }
-    if (isset($_POST["3"])) {
-        updateRow($conn, "3");
-    }
-    if (isset($_POST["4"])) {
-        updateRow($conn, "4");
-    }
-    if (isset($_POST["5"])) {
-        updateRow($conn, "5");
-    }
-
-
-    $name = $_COOKIE["name"];
-    $query = "SHOW tables;";
-    $stmt = $conn->prepare($query);
-    if ($stmt->execute()) {
-        $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
-        if (in_array($name, $tables)) {
-            $query = "SELECT * FROM $name";
-            $stmt = $conn->prepare($query);
-            if ($stmt->execute()) {
-                $weights = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-        }
-    }
     $query = "SELECT * FROM elaston";
     $stmt = $conn->prepare($query);
     if ($stmt->execute()) {
         $elaston = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
-    
-    
-    include "./header.php";
-    ?>
+        } 
+   ?>
 
 
     
@@ -69,26 +27,88 @@
 
     <section class="session">
         <h2>Strenght practice A</h2>
-    <div class="sets">
+        <p>increase weight weekly</p>
+        <div class="sets">
             <div>
             <?php 
-            foreach ($elaston as $row => $value) {?>
+            foreach (array_slice($elaston, 0, 5) as $row => $value) {?>
                 
                 <h3><?=$value["practice"]?></h3>
                 <p><?=$value["reps"]?> reps for <?=$value["sets"]?> sets </p>
-                <p>Weight <input class="textarea" name=<?=$value["weightColumn"]?> value=<?=$weights[$value["weightId"]][$value['weightColumn']]?> /> </p>
                 <form action="elaston.php" method="POST">
+                <p>Weight <input class="textarea" name=<?=$value["weightColumn"]?> value="<?=$weights[$value["weightId"]][$value['weightColumn']]?>kg" /> </p>
                     <input name="id" value=<?=$value['trainingNumber']?> hidden/>
                     <input name="column" value=<?=$value['weightColumn']?> hidden>
-                    <button name="add" type="submit">Add 1 kilo</button>
+                    <button name="add" type="submit">Add 1.25 kilo</button>
+                    <button name="updateWeight" value=<?=$value["weightColumn"]?> type="submit">Update weight</button>
                 </form>
                 <?php } ?>
+                <p>lastsession <?=$weights[0]["lastsession"]?></p>
             </div>
-            <!--updatebutton ei toimi jos kaksi formia, addbutton ei toimi jos yksi formi -->
-            <form action="elaston.php" method="POST">
-            <button class="updatebutton" name="1" value="1" type="submit">Update weights</button>
-            </form>
-    </div>
+        </div>
+        <h2>Strenght practice B</h2>
+        <p>increase weight weekly</p>
+        <div class="sets">
+            <div>
+            <?php 
+            foreach (array_slice($elaston, 5, 6) as $row => $value) {?>
+                
+                <h3><?=$value["practice"]?></h3>
+                <p><?=$value["reps"]?> reps for <?=$value["sets"]?> sets </p>
+                <form action="elaston.php" method="POST">
+                <p>Weight <input class="textarea" name=<?=$value["weightColumn"]?> value="<?=$weights[$value["weightId"]][$value['weightColumn']]?>kg" /> </p>
+                    <input name="id" value=<?=$value['trainingNumber']?> hidden/>
+                    <input name="column" value=<?=$value['weightColumn']?> hidden>
+                    <button name="add" type="submit">Add 1.25 kilo</button>
+                    <button name="updateWeight" value=<?=$value["weightColumn"]?> type="submit">Update weight</button>
+                </form>
+                <?php } ?>
+                <p>lastsession <?=$weights[1]["lastsession"]?></p>
+            </div>
+        </div>
+        <h2>Hypertropfy practice A</h2>
+        <p>increase reps weekly</p>
+        <div class="sets">
+            <div>
+            <?php 
+            foreach (array_slice($elaston, 11, 6) as $row => $value) {
+                $column = "rep" . $value["weightColumn"];?>   
+                <h3><?=$value["practice"]?></h3>
+                <p> <input name="reps" value="<?=$weights[$value["weightId"]][$column]?>"/> reps for <?=$value["sets"]?> sets </p>
+                <form action="elaston.php" method="POST">
+                <p>Weight <input class="textarea" name=<?=$value["weightColumn"]?> value="<?=$weights[$value["weightId"]][$value['weightColumn']]?>kg" /> </p>
+                    <input name="id" value=<?=$value['trainingNumber']?> hidden/>
+                    <input name="column" value=<?=$value['weightColumn']?> hidden>
+                    <button name="addreps" value="1" type="submit">Add 1 rep</button>
+                    <button name="addreps" value="-1" type="submit">Remove 1 rep</button>
+                    <button name="updateWeight" value=<?=$value["weightColumn"]?> type="submit">Update weight</button>
+                </form>
+                <?php } ?>
+                <p>lastsession <?=$weights[2]["lastsession"]?></p>
+            </div>
+        </div>
+        <h2>Hypertropfy practice B</h2>
+        <p>increase reps weekly</p>
+        <div class="sets">
+            <div>
+            <?php 
+            foreach (array_slice($elaston, 17, 6) as $row => $value) {
+                $column = "rep" . $value["weightColumn"];?>
+                
+                <h3><?=$value["practice"]?></h3>
+                <p> <input name="reps" value="<?=$weights[$value["weightId"]][$column]?>"/> reps for <?=$value["sets"]?> sets </p>
+                <form action="elaston.php" method="POST">
+                <p>Weight <input class="textarea" name=<?=$value["weightColumn"]?> value="<?=$weights[$value["weightId"]][$value['weightColumn']]?>kg" /> </p>
+                    <input name="id" value=<?=$value['trainingNumber']?> hidden/>
+                    <input name="column" value=<?=$value['weightColumn']?> hidden>
+                    <button name="addreps" value="1" type="submit">Add 1 rep</button>
+                    <button name="addreps" value="-1" type="submit">Remove 1 rep</button>
+                    <button name="updateWeight" value=<?=$value["weightColumn"]?> type="submit">Update weight</button>
+                </form>
+                <?php } ?>
+                <p>lastsession <?=$weights[3]["lastsession"]?></p>
+            </div>
+        </div>
     </section>
 
 <?php include "./footer.php"; ?>

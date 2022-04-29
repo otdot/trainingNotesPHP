@@ -31,3 +31,21 @@
             }
         }
     }
+
+
+    function updateRow($conn, $row) {
+  $name = $_COOKIE["name"];
+  $id = $_POST[$row];
+  $a = $_POST['a'] ?? 0;
+  $b = $_POST['b'] ?? 0;
+  $c = $_POST['c'] ?? 0;
+  $d = $_POST['d'] ?? 0;
+  $e = $_POST['e'] ?? 0;
+  $f = $_POST['f'] ?? 0;
+  echo $a . $b . $f . $name . $id;
+  $query = "update $name set lastsession=now(), a=$a, b='$b', c=$c, d=$d, e=$e, f=$f where trainingId=$id";
+  $stmt = $conn->prepare($query);
+  if ($stmt->execute()) {
+    echo "weights updated";
+  }
+}

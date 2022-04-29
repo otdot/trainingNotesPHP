@@ -10,15 +10,16 @@ if ($stmt->execute()) {
 }
 
 
-if (!isset($_COOKIE["name"])) {
-  setcookie("name", "unknown", time() + 3600*24*30);
-}
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (isset($_POST["name"])) {
-    setcookie("name", sanitazeInput($_POST["name"]), time() + 3600*24*30);
-    header("location: ./elaston.php");
-  }
-}
+// if (!isset($_COOKIE["name"])) {
+//   setcookie("name", "unknown", time() + 3600*24*30);
+// }
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   if (isset($_POST["name"])) {
+//     $program = $_GET["program"];
+//     setcookie("name", sanitazeInput($_POST["name"]), time() + 3600*24*30);
+//     header("location: ./$program.php");
+//   }
+// }
 
 ?>
 
@@ -31,7 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
       if (isset($_POST["createaccount"])) {
         $name = $_POST["name"];
-        createPersonalDB($conn, $tables);
+        // createPersonalDB($conn, $tables);
+        createAccount($conn);
       }
       ?>
       </main>
