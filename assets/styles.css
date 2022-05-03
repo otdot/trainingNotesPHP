@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap");
+
+:root {
+  --brownred: #410b13ff;
+  --peach: #cd5d67ff;
+  --redlight: #ba1f33ff;
+  --brownreddark: #421820ff;
+  --darkred: #91171fff;
+  --font: "Dongle", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+}
+
+body {
+  background-color: white;
+}
+
+.bgimg1,
+.bgimg2 {
+  opacity: 0.8;
+  object-fit: cover;
+  position: absolute;
+}
+
+.bgimg1 {
+  height: 83%;
+  width: 33%;
+  top: 5rem;
+  left: 0rem;
+}
+
+.bgimg2 {
+  height: 83%;
+  width: 67%;
+  top: 5rem;
+  right: 0rem;
+}
+main {
+  margin: 0 auto;
+  min-height: 80vh;
+}
+
+.indexlink {
+  width: 12rem;
+  height: 3rem;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  font-size: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--redlight);
+}
+
+.indexlink:hover {
+  background-color: rgb(150, 134, 134);
+  cursor: pointer;
+}
+
+.indexlink a {
+  padding: 0 3rem;
+}
+
+.indexlink a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.header {
+  height: 10vh;
+  background-color: var(--brownreddark);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+  z-index: 10;
+}
+
+.header ul li {
+  display: inline-block;
+}
+
+.header a {
+  color: rgb(255, 255, 255);
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 1rem auto;
+}
+
+.form form {
+  width: 40vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2rem;
+  z-index: 10;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+.form form h1 {
+  font-size: 2rem;
+}
+
+.forminput {
+  text-align: left;
+  margin: 0.5rem;
+}
+
+.forminput label {
+  display: inline-block;
+  width: 6rem;
+}
+
+.forminput input {
+  height: 1.5rem;
+  width: 8rem;
+  font-size: 2rem;
+}
+
+.submitButton {
+  background-color: rgb(174, 174, 174);
+  border: 0;
+  display: inline-block;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 2rem;
+  height: 2.5rem;
+  width: 10rem;
+  border-radius: 20px;
+}
+
+.submitButton:hover {
+  background-color: rgb(120, 120, 120);
+}
+
+.programsdiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255);
+  z-index: 10;
+}
+
+.programs {
+  display: flex;
+  justify-content: center;
+}
+
+.programsh2 {
+  font-size: 3rem;
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  z-index: 10;
+}
+
+.programs div {
+  display: block;
+  min-height: 20rem;
+  width: 15rem;
+  font-size: 2rem;
+  margin: 1rem;
+  z-index: 10;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.programs div p {
+  font-size: 1.5rem;
+}
+
+.programs div img {
+  height: 60%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.about {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.sessions {
+  width: 60vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.session {
+  margin: 1rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.session:hover {
+  box-shadow: inset 1px 1px rgba(0, 0, 0, 0.236);
+}
+
+.session .info,
+.sets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sets {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.textarea,
+.reps {
+  height: 1rem;
+  background-color: white;
+  border: 0;
+  font-size: 1.5rem;
+}
+
+.reps {
+  width: 1rem;
+}
+
+.arnold {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  position: absolute;
+  width: 100%;
+  height: 11vh;
+  background-color: var(--brownreddark);
+  color: white;
+  border: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  z-index: 10;
+}
+
+.footer footer {
+  z-index: 10;
+}
+
+@media (max-width: 1000px) {
+  .headerProgramOwner {
+    display: none;
+  }
+
+  .programs {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .bgimg1 {
+    display: none;
+  }
+
+  .bgimg2 {
+    display: none;
+  }
+  .sessions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form {
+    border: 0;
+    margin: 1rem;
+  }
+
+  .form form {
+    width: 90%;
+    height: 100%;
+  }
+}
