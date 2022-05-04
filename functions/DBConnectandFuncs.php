@@ -31,7 +31,6 @@ function createAccount($conn) {
     $pass = htmlspecialchars($_POST["pass"]);
     $username = htmlspecialchars($_POST["name"]);
       if (preg_match("/[a-z]/", $pass) && (strlen($pass) >= 8) && preg_match("/[A-Z]/", $pass) && preg_match("/[0-9]/", $pass)) {
-          echo "password is valid";
           $hashFormat = "$2y$10$";
           $salt = "littlebitofsaltasdasdasdasdasdasdasd";
           $hashNsalt = $hashFormat . $salt;
@@ -39,11 +38,10 @@ function createAccount($conn) {
           $query = "INSERT into users values('$username', '$pass', null);";
           $stmt = $conn->prepare($query);
           if ($stmt->execute()) {
-            echo "user created";
             return true;   
             }
       }else {
-          echo "password needs contain numbers, upper and lower case charactes and have atleast 8 characters.";
+          echo "<p class='errmsg'>password needs contain numbers, upper and lower case charactes and have atleast 8 characters.</p>";
           return false;
       }
 }
@@ -100,11 +98,11 @@ function createPersonalDB($conn, $tables) {
           $query .= "insert into $name values(5, 0, 0, 0, 0, 0, 0, null, 10, 10, 10, 10, 10, 10);";
           $stmt = $conn->prepare($query);
           if ($stmt->execute()) {
-            echo "New training profile $name has been created!🏋️‍♀️";
+            echo "<p class='errmsg'>New training profile $name has been created!🏋️‍♀️</p>";
           }
         }
       }else {
-        echo "name already in use, please try another name";
+        echo "<p class='errmsg'> name already in use, please try another name</p>";
       }
     }
   }
